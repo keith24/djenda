@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<h1>To Do</h1>
+	
+	<ul>
+		{% for line in object_list %}
+			<li class="todo-line">
+				<a href="{{ line.get_absolute_url }}">{{ line }}</a>
+				(<a href="{% url 'item-edit' pk=line.id %}">edit</a>)
+			</li>
+		{% endfor %}
+	</ul>
+	
+	<a href="{% url 'new-item' %}">Add line</a>
+
+{% endblock content %}

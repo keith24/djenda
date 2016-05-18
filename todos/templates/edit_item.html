@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{% if todoitem.id %}
+		<h1>Edit Item</h1>
+	{% else %}
+		<h1>Add Item</h1>
+	{% endif %}
+	
+	<form action="{{ action }}" method="POST">
+		{% csrf_token %}
+		<ul>
+			{{ form.as_ul }}
+		</ul>
+		<input id="save_item" type="submit" value="Save" />
+	</form>
+	
+	{% if todoitem.id %}
+		<a href="{% url 'item-delete' pk=todoitem.id %}">Delete</a>
+	{% endif %}
+	<br><a href="{% url 'todo-list' %}">Back to list</a>
+	
+{% endblock content %}

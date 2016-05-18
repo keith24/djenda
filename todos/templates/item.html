@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h1>{{ todoitem }}</h1>
+
+	<p>
+		{% if todoitem.due_date %}
+			Due: {{ todoitem.due_date }}
+		{% endif %}
+		{% if todoitem.todo_date %}
+			<br>Do on: {{ todoitem.todo_date }}
+		{% endif %}
+	</p>
+
+	<p><a href="{% url 'todo-list' %}">Back to list</a></p>
+{% endblock %}
